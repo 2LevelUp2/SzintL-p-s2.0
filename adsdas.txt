@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Előfizetés - SzintLépés Tippmix VIP</title>
+</head>
+<body>
+    <h1>SzintLépés Tippmix VIP Előfizetés</h1>
+    <p>Kattints az alábbi gombra a havi előfizetéshez:</p>
+    
+    <!-- PayPal Button Container -->
+    <div id="paypal-button-container-P-4KV6128719396991GM5DOSQA"></div>
+    
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AYwyFXRyaS4ajlNVpAnLW725yBzFsZoF8yd_PeXEZ0P85HE6xuk7LcSjEYh8SCnQCBwjukwKjz7VTx5B&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+    
+    <script>
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'subscribe'
+            },
+            createSubscription: function(data, actions) {
+                return actions.subscription.create({
+                    /* Creates the subscription */
+                    plan_id: 'P-4KV6128719396991GM5DOSQA'
+                });
+            },
+            onApprove: function(data, actions) {
+                alert(data.subscriptionID); // A sikeres előfizetés után üzenetet jelenít meg
+            }
+        }).render('#paypal-button-container-P-4KV6128719396991GM5DOSQA'); // Rendereli a PayPal gombot
+    </script>
+</body>
+</html>
